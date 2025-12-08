@@ -1,1 +1,61 @@
-/* your styles go here */
+.categories-columns {
+    display: flex;
+    flex-direction: column;
+}
+
+.categories-columns .item {
+    border-bottom: solid 1px #8a8d93;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.categories-columns .item:first-of-type {
+    border-top: solid 1px #8a8d93;
+}
+
+.categories-columns .actions svg {
+    stroke: #fff;
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.categories-columns .actions svg:hover {
+    stroke: rgb(53, 53, 237);
+    width: 24px;
+    height: 24px;
+}
+
+.categories-columns p {
+    color: #ffffff;
+    margin-bottom: 0;
+}
+
+.categories-columns p a {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+}
+
+.categories-columns p a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(53, 53, 237);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.categories-columns p a:hover {
+    color: rgb(53, 53, 237);
+}
+
+.categories-columns p a:hover::after {
+    transform: scaleX(1);
+}
