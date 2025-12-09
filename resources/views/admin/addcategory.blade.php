@@ -7,10 +7,10 @@
     </div>
 @endif
 
-<div class="container-fluid">
+<div class="container-fluid add-product">
     <form action="{{ route('admin.postaddcategory') }}" method="POST">
         @csrf
-        <input type="text" name="category" placeholder="Enter Category">
+        <input type="text" name="category" placeholder="Enter Category" required>
         <input type="submit" name="submit" value="Add Category">
     </form>
 </div>

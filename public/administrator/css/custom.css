@@ -1,3 +1,35 @@
+/* Right menu alignment */
+.right-menu {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px;
+}
+
+.right-menu .list-inline-item {
+    margin: 0 !important;
+}
+
+.right-menu .logout {
+    display: flex;
+    align-items: center;
+}
+
+.right-menu .logout form {
+    margin: 0;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-form .form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
 .categories-columns {
     display: flex;
     flex-direction: column;
@@ -32,14 +64,16 @@
     margin-bottom: 0;
 }
 
-.categories-columns p a {
+.categories-columns p a,
+td a {
     color: #fff;
-    text-decoration: none;
+    text-decoration: none !important;
     position: relative;
     transition: color 0.3s ease-in-out;
 }
 
-.categories-columns p a::after {
+.categories-columns p a::after,
+td a::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -52,10 +86,155 @@
     transition: transform 0.3s ease-in-out;
 }
 
-.categories-columns p a:hover {
-    color: rgb(53, 53, 237);
+.categories-columns p a:hover,
+td a:hover {
+    color: #ffffff;
 }
 
-.categories-columns p a:hover::after {
+.categories-columns p a:hover::after,
+td a:hover::after {
     transform: scaleX(1);
+}
+
+.add-product form {
+    max-width: 700px;
+}
+
+.add-product input,
+.add-product select,
+.add-product textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #8a8d93;
+    background-color: #2d3035;
+    color: #fff;
+    border-radius: 11px;
+    padding: 10px;
+}
+
+.search-form input {
+    margin-bottom: 0px;
+    border: 1px solid #8a8d93;
+    background-color: #2d3035;
+    color: #fff;
+    border-radius: 11px;
+    padding: 10px;
+}
+
+.add-product select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238a8d93'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    padding-right: 40px;
+}
+
+.add-product select option {
+    background-color: #2d3035;
+    color: #fff;
+    padding: 10px;
+}
+
+button.form-button {
+    padding: 10px;
+    border: 1px solid #8a8d93;
+    background-color: transparent;
+    border-radius: 11px;
+    color: #fff;
+    margin-bottom: 50px;
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+button.form-button.no-margin {
+    margin-bottom: 0px;
+}
+
+button.form-button:hover {
+    background-color: rgb(53, 53, 237);
+}
+
+/* Products Table */
+.products-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #2d3035;
+    border-radius: 11px;
+    overflow: hidden;
+}
+
+.products-table thead {
+    background-color: #232529;
+}
+
+.products-table th {
+    color: #fff;
+    font-weight: 600;
+    text-align: left;
+    padding: 15px 20px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgb(53, 53, 237);
+}
+
+.products-table td {
+    color: #c9c9c9;
+    padding: 15px 20px;
+}
+
+.products-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.products-table tbody tr:hover {
+    background-color: #383b40;
+}
+
+.products-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.products-table .actions {
+    display: flex;
+    gap: 10px;
+}
+
+.products-table .actions svg {
+    stroke: #fff;
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.products-table .actions svg:hover {
+    stroke: rgb(53, 53, 237);
+}
+
+.products-table .actions a {
+    text-decoration: none !important;
+}
+
+.products-table .actions a:hover::after {
+    transform: scaleX(0);
+}
+
+.petite-image {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.petite-image img {
+    max-width: 200px;
+}
+
+.view-product-image {
+    width: 50px;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
 }
