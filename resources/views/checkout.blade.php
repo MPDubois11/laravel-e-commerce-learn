@@ -78,57 +78,8 @@
                         </div>
                     </div>
 
-                    <div class="form-section">
-                        <h3><i class="fa fa-credit-card"></i> Payment Method</h3>
-                        <div class="payment-methods">
-                            <label class="payment-option">
-                                <input type="radio" name="payment_method" value="card" checked>
-                                <span class="payment-label">
-                                    <i class="fa fa-credit-card"></i>
-                                    Credit / Debit Card
-                                </span>
-                            </label>
-                            <label class="payment-option">
-                                <input type="radio" name="payment_method" value="paypal">
-                                <span class="payment-label">
-                                    <i class="fa fa-paypal"></i>
-                                    PayPal
-                                </span>
-                            </label>
-                        </div>
-
-                        <div class="card-details">
-                            <div class="form-group full-width">
-                                <label for="card_number">Card Number</label>
-                                <input type="text" id="card_number" name="card_number" placeholder="1234 5678 9012 3456" maxlength="19">
-                            </div>
-                            <div class="form-row three-col">
-                                <div class="form-group">
-                                    <label for="expiry_month">Exp. Month</label>
-                                    <select id="expiry_month" name="expiry_month">
-                                        @for($i = 1; $i <= 12; $i++)
-                                            <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}">{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}</option>
-                                        @endfor
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="expiry_year">Exp. Year</label>
-                                    <select id="expiry_year" name="expiry_year">
-                                        @for($i = date('Y'); $i <= date('Y') + 10; $i++)
-                                            <option value="{{ $i }}">{{ $i }}</option>
-                                        @endfor
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="cvv">CVV</label>
-                                    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <button type="submit" class="btn-place-order">
-                        <i class="fa fa-lock"></i> Place Order
+                        <i class="fa fa-lock"></i> Go to Payment
                     </button>
                 </form>
             </div>

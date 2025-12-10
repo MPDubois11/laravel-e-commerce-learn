@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Order;
 
 class AdminController extends Controller
 {
@@ -132,6 +133,26 @@ class AdminController extends Controller
             ->paginate(12);
 
         return view('admin.viewproducts', compact('products'));
+    }
+
+    public function viewOrders() {
+        $orders = Order::latest()->get();
+
+        return view('admin.vieworders', compact('orders'));
+    }
+
+    public function viewOrder($id) {
+        $order = Order::with('items.product', 'user')->findOrFail($id);
+
+        return view('admin.vieworder', compact('order'));
+    }
+
+    public function updateOrderStatus(Request $request, $id) {
+        $order = Order::findOrFail($id);
+        $order->status = $request->status;
+        $order->save();
+
+        return redirect()->back()->with('status_updated', 'Order status updated successfully.');
     }
 
 }

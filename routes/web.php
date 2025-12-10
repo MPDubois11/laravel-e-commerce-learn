@@ -16,7 +16,14 @@ Route::get('/view-cart', [UserController::class, 'viewCart'])->middleware(['auth
 Route::get('/remove-from-cart/{id}', [UserController::class, 'removeFromCart'])->middleware(['auth', 'verified'])->name('removefromcart');
 Route::get('/checkout', [UserController::class, 'checkoutPage'])->middleware(['auth', 'verified'])->name('checkout');
 Route::post('/place-order', [UserController::class, 'placeOrder'])->middleware(['auth', 'verified'])->name('placeorder');
+Route::get('/stripe/success/{order}', [UserController::class, 'stripeSuccess'])->middleware(['auth', 'verified'])->name('stripe.success');
+Route::get('/stripe/cancel/{order}', [UserController::class, 'stripeCancel'])->middleware(['auth', 'verified'])->name('stripe.cancel');
 Route::get('/thank-you/{orderId}', [UserController::class, 'thankYouPage'])->middleware(['auth', 'verified'])->name('thankyou');
+
+Route::get('/download-invoice/{orderId}', [UserController::class, 'downloadInvoice'])->middleware(['auth', 'verified'])->name('downloadinvoice');
+
+// Stripe Webhook (no auth, no CSRF - verified by signature)
+Route::post('/stripe/webhook', [UserController::class, 'stripeWebhook'])->name('stripe.webhook');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -41,6 +48,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/update-product/{id}', [AdminController::class, 'postUpdateProduct'])->name('admin.postupdateproduct');
 
     Route::any('/search-product', [AdminController::class, 'searchProduct'])->name('admin.seachproduct');
+
+    Route::get('/view-orders', [AdminController::class, 'viewOrders'])->name('admin.vieworders');
+    Route::get('/view-order/{id}', [AdminController::class, 'viewOrder'])->name('admin.vieworder');
+    Route::patch('/update-order-status/{id}', [AdminController::class, 'updateOrderStatus'])->name('admin.updateorderstatus');
 });
 
 require __DIR__.'/auth.php';

@@ -107,7 +107,7 @@
                   <ul id="productsDropdown" class="collapse list-unstyled ">
                     <li><a href="{{ route('admin.addproduct') }}">Add Product</a></li>
                     <li><a href="{{ route('admin.viewproducts') }}">View Products</a></li>
-                    <li><a href="#">View Orders</a></li>
+                    <li><a href="{{ route('admin.vieworders') }}">View Orders</a></li>
                   </ul>
                 </li>
         </ul><span class="heading">Extras</span>
