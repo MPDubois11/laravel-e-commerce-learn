@@ -6,8 +6,17 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 
 Route::get('/', [UserController::class, 'homePage'])->name('index');
+Route::get('/all-products', [UserController::class, 'productsPage'])->name('allproducts');
+Route::get('/product/{id}', [UserController::class, 'productPage'])->name('product');
 
 Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::post('/add-to-cart/{id}', [UserController::class, 'addToCart'])->middleware(['auth', 'verified'])->name('addtocart');
+Route::get('/view-cart', [UserController::class, 'viewCart'])->middleware(['auth', 'verified'])->name('viewcart');
+Route::get('/remove-from-cart/{id}', [UserController::class, 'removeFromCart'])->middleware(['auth', 'verified'])->name('removefromcart');
+Route::get('/checkout', [UserController::class, 'checkoutPage'])->middleware(['auth', 'verified'])->name('checkout');
+Route::post('/place-order', [UserController::class, 'placeOrder'])->middleware(['auth', 'verified'])->name('placeorder');
+Route::get('/thank-you/{orderId}', [UserController::class, 'thankYouPage'])->middleware(['auth', 'verified'])->name('thankyou');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
